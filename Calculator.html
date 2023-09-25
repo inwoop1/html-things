@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MRR Calculator</title>
+</head>
+<body>
+    <h1>Monthly Recurring Revenue (MRR) Calculator</h1>
+    <form id="mrrCalculator">
+        <label for="oneProductPrice">Enter One product Price:</label>
+        <input type="number" id="oneProductPrice" step="0.01" value="1000" required><br><br>
+
+        <label for="billCredits">Enter bill credits:</label>
+        <input type="number" id="billCredits" step="0.01" value="240" required><br><br>
+
+        <input type="submit" value="Calculate MRR">
+    </form>
+
+    <p id="result">MRR: <span id="mrrValue">Calculating...</span></p>
+
+    <script>
+        // JavaScript to Calculate MRR
+        document.getElementById("mrrCalculator").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Get values of 'One product Price' and 'bill credits' from the form
+            var oneProductPrice = parseFloat(document.getElementById("oneProductPrice").value);
+            var billCredits = parseFloat(document.getElementById("billCredits").value);
+
+            // Calculate MRR
+            var MRR = oneProductPrice - (billCredits / 24);
+
+            // Display the result
+            document.getElementById("mrrValue").textContent = MRR.toFixed(2);
+        });
+    </script>
+</body>
+</html>
